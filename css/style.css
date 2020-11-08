@@ -13,6 +13,10 @@ body{
 :root{
     --bg-light-skills: rgba(0, 128, 0, 0.658);
     --bg-dark-skills: rgb(0, 128, 0);
+    --main-blue: rgba(0, 0, 255, 0.658);
+    --main-yellow: rgba(255, 255, 0, 0.658);
+    --main-orange: rgba(255, 166, 0, 0.658);
+    --main-red:  rgba(255, 0, 0, 0.658);
 }
 
 .cursor{
@@ -21,20 +25,7 @@ body{
     border: 2px solid black;
     border-radius: 50%;
     position: absolute;
-    transition-duration: 200ms;
-    transition-timing-function: ease-out;
-    animation: cursorAnim .5s infinite alternate;
-    background-color: #FFF;
     z-index: 99;
-}
-
-@keyframes cursorAnim {
-    from {
-        transform: scale(1);
-    }
-    to {
-        transform: scale(0.7);
-    }
 }
 
 @keyframes cursorAnim2 {
@@ -50,14 +41,26 @@ body{
     }
 }
 
+.link-grow{
+    transform: scale(2);
+    background: lightblue;
+}
+
 .expand{
     animation: cursorAnim2 .5s forwards;
-    border: 1px solid red;
+    border: 1px solid rgba(255, 0, 0, 0.658);
 }
 
 a{
     text-decoration: none;
     color: black;
+    cursor: none;
+}
+
+.paper-plane{
+    height: 100px;
+    position: absolute;
+    z-index: 99;
 }
 
 .intro{
@@ -73,7 +76,7 @@ a{
 }
 
 .slider{
-    background: rgb(248, 145, 85);
+    background: red;
     position: fixed;
     top: 0;
     left: 0;
@@ -82,7 +85,7 @@ a{
     transform: translateY(100%);
 }
 
-.intro-text{
+.intro-container{
     color: #FFF;
     font-size: 3rem;
 }
@@ -153,6 +156,14 @@ nav{
     z-index: 99;
 }
 
+.nav-links-bottom-left:hover, .nav-links-top-left:hover{
+    transform: skew(-30deg);
+}
+
+.nav-links-bottom-right:hover, .nav-links-top-right:hover{
+    transform: skew(30deg);
+}
+
 ul .box-top-left{
     position: absolute;
     bottom: 0;
@@ -160,7 +171,6 @@ ul .box-top-left{
     display: inline-block;
     background: rgba(0, 0, 255, 0.658);
     height: 1vw;
-    z-index: -1;
 }
 
 ul .box-top-right{
@@ -170,7 +180,6 @@ ul .box-top-right{
     display: inline-block;
     background: rgba(0, 128, 0, 0.658);
     height: 1vw;
-    z-index: -1;
 }
 
 ul .box-bottom-left{
@@ -180,7 +189,6 @@ ul .box-bottom-left{
     display: inline-block;
     background: rgba(255, 255, 0, 0.658);
     height: 1vw;
-    z-index: -1;
 }
 
 ul .box-bottom-right{
@@ -190,7 +198,6 @@ ul .box-bottom-right{
     display: inline-block;
     background: rgba(255, 166, 0, 0.658);
     height: 1vw;
-    z-index: -1;
 }
 
 .big-text{
@@ -203,7 +210,6 @@ ul .box-bottom-right{
 }
 
 .test h2{
-    
     width: 90%;
     text-align: center;
 }
@@ -258,7 +264,7 @@ h2 .box{
 
 #skills{
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     position: absolute;
 }
 
@@ -267,7 +273,7 @@ h2 .box{
     font-size: 9rem;
     padding: 1.5rem;
     letter-spacing: 20px;
-    text-align: center;
+    text-align: left;
     color: #FFF;
 }
 
@@ -279,7 +285,7 @@ h2 .box{
 
 #projects{
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     position: absolute;
 }
 
@@ -288,15 +294,116 @@ h2 .box{
     font-size: 9rem;
     padding: 1.5rem;
     letter-spacing: 20px;
-    color:  rgba(255, 255, 0, 0.658);
-    text-shadow: 5px 10px red;
+    color:  var(--bg-dark-skills);
 }
 
 
+#projects-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
 
+#projects-container .project-container{
+    margin: 2rem;
+    height: 60vh;
+    width: 20%;
+    padding: 1rem;
+    border: 2px solid green;
+    text-align: center;
+    box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+}
 
+.content{
+    padding-bottom: 2rem;
+    border-bottom: 2px solid green;
+}
 
+.numbers{
+    display: block;
+    font-size: 10rem;
+    font-weight: bold;
+    transition: all 2s linear;
+    transform: rotateZ(180deg);
+}
 
+.first-number{
+    color: var(--main-red);
+}
 
+.scnd-number{
+    color: var(--main-orange);
+}
 
+.third-number{
+    color: var(--main-yellow);
+}
 
+.number{
+    display: block;
+    font-size: 10rem;
+    font-weight: bold;
+    transition: all 2s linear;
+    transform: rotateY(180deg);
+    color: var(--main-blue);
+}
+
+#contact{
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#contact h2{
+    font-size: 8rem;
+    text-align: left;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+}
+
+.google-map{
+    margin-right: 5rem;
+    border: 3px solid black;
+}
+
+input{
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border: none;
+    width: 90%;
+    border-bottom: 3px solid black;
+    background: orange;
+    font-size: 2rem;
+}
+
+input::placeholder{
+    color: #FFF;
+    font-family: 'Poppins', sans-serif;
+}
+
+textarea{
+    border: 3px solid black;
+    background: orange;
+    font-size: 2rem;
+}
+
+textarea::placeholder{
+    color: #FFF;
+    font-family: 'Poppins', sans-serif;;
+}
+
+button{
+    height: 5vh;
+    width: 80%;
+    background: orange;
+    border: 3px solid black;
+    color: #FFF;
+    font-size: 2rem;
+    font-family: 'Poppins', sans-serif;
+}
